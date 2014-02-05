@@ -22,7 +22,7 @@ get '/:id' do
   pass if IGNORE.include?(params[:id])
 
   begin
-    redirect_to_url = Shortinator.click(params[:id], "0.0.0.0")
+    redirect_to_url = Shortinator.click(params[:id], request.ip)
     log.info { "redirect_to_url=#{redirect_to_url}" }
     [302, { "Location" => redirect_to_url }, html_wrapper("<a href=\"#{redirect_to_url}\">#{redirect_to_url}</a>")]
   rescue => e
