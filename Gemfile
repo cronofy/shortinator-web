@@ -1,5 +1,6 @@
 source "http://rubygems.org"
 
+gem 'rake'
 gem 'unicorn'
 gem 'sinatra'
 gem 'hatchet'
