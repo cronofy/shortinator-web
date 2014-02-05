@@ -10,7 +10,7 @@ Hatchet.configure do |config|
   config.level :info
 end
 
-IGNORE = ['favicon.ico']
+KEY_FORMAT = /^[0-9a-zA-Z]{7}$/
 
 def html_wrapper(content)
   "<html><body>#{content}</body></html>"
@@ -21,9 +21,7 @@ get '/' do
 end
 
 get '/:id' do
-  if IGNORE.include?(params[:id])
-    return [200, {}, ""]
-  end
+  halt(404, "Not found") unless KEY_FORMAT.match(params[:id])
 
   begin
     redirect_to_url = Shortinator.click(params[:id], "0.0.0.0")
@@ -31,6 +29,6 @@ get '/:id' do
     [ 302, { "Location" => redirect_to_url }, html_wrapper("<a href=\"#{redirect_to_url}\">#{redirect_to_url}</a>")]
   rescue => e
     logger.error e.message
-    [ 404, {}, html_wrapper("Not found") ]
+    halt(404, "Not found")
   end
 end
