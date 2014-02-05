@@ -1,8 +1,6 @@
-require "bundler/setup"
-require 'sinatra'
-require 'shortinator'
+require 'bundler'
 
-require 'hatchet'
+Bundler.require(:default)
 
 register Hatchet
 
