@@ -1,3 +1,4 @@
 .powenv
 log
 tmp
+vendor
