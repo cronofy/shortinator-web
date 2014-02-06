@@ -11,8 +11,6 @@ Hatchet.configure do |config|
   config.level :info
 end
 
-KEY_FORMAT = /^[0-9a-zA-Z]{7}$/
-
 def html_wrapper(content)
   "<html><body>#{content}</body></html>"
 end
@@ -30,7 +28,7 @@ get '/' do
 end
 
 get '/:id' do
-  halt(404, "Not found") unless KEY_FORMAT.match(params[:id])
+  halt(404, "Not found") unless Shortinator::KEY_FORMAT.match(params[:id])
 
   begin
     redirect_to_url = Shortinator.click(params[:id], request_params(request))
