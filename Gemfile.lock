@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/adambird/shortinator.git
-  revision: 4693516883674b15900af7dee4d84ec63ad317f1
+  revision: 6f20d11730c8b561687c971b5c5fffee2f40d6b6
   specs:
     shortinator (0.0.1)
       base62 (= 1.0.0)

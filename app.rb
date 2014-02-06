@@ -8,10 +8,16 @@ Hatchet.configure do |config|
   config.level :info
 end
 
-IGNORE = ['favicon.ico']
-
 def html_wrapper(content)
   "<html><body>#{content}</body></html>"
+end
+
+def request_params(request)
+  {
+    :ip => request.ip,
+    :referrer => request.referrer,
+    :user_agent => request.user_agent
+  }
 end
 
 get '/' do
@@ -19,14 +25,14 @@ get '/' do
 end
 
 get '/:id' do
-  pass if IGNORE.include?(params[:id])
+  halt(404, "Not found") unless Shortinator::KEY_FORMAT.match(params[:id])
 
   begin
-    redirect_to_url = Shortinator.click(params[:id], request.ip)
+    redirect_to_url = Shortinator.click(params[:id], request_params(request))
     log.info { "redirect_to_url=#{redirect_to_url}" }
     [302, { "Location" => redirect_to_url }, html_wrapper("<a href=\"#{redirect_to_url}\">#{redirect_to_url}</a>")]
   rescue => e
     logger.error e.message
-    [404, {}, html_wrapper("Not found")]
+    halt(404, "Not found")
   end
 end
