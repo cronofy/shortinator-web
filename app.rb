@@ -1,6 +1,3 @@
-require "bundler/setup"
-require 'sinatra'
-require 'shortinator'
 require 'bundler'
 
 Bundler.require(:default)
@@ -32,7 +29,7 @@ get '/:id' do
 
   begin
     redirect_to_url = Shortinator.click(params[:id], request_params(request))
-    logger.info "redirect_to_url=#{redirect_to_url}"
+    log.info { "redirect_to_url=#{redirect_to_url}" }
     [302, { "Location" => redirect_to_url }, html_wrapper("<a href=\"#{redirect_to_url}\">#{redirect_to_url}</a>")]
   rescue => e
     logger.error e.message
