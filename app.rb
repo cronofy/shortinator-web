@@ -1,8 +1,4 @@
-require "bundler/setup"
-require 'sinatra'
-require 'shortinator'
 require 'bundler'
-
 Bundler.require(:default)
 
 register Hatchet
@@ -23,8 +19,16 @@ def request_params(request)
   }
 end
 
+def root_redirect
+  @_root_redirect ||= ENV['SHORTINATOR_ROOT_REDIRECT']
+end
+
 get '/' do
-  [200, {}, html_wrapper("Shortinator")]
+  if root_redirect
+    [302, { "Location" => root_redirect }, html_wrapper("<a href=\"#{root_redirect}\">#{root_redirect}</a>")]
+  else
+    [200, {}, html_wrapper("Shortinator")]
+  end
 end
 
 get '/:id' do
