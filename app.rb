@@ -5,6 +5,9 @@ register Hatchet
 
 Hatchet.configure do |config|
   config.level :info
+  config.appenders << Hatchet::LoggerAppender.new do |appender|
+    appender.logger = Logger.new(STDOUT)
+  end
 end
 
 def html_wrapper(content)
