@@ -1,6 +1,8 @@
 require 'bundler'
 Bundler.require(:default)
 
+Dotenv.load
+
 register Hatchet
 
 Hatchet.configure do |config|
