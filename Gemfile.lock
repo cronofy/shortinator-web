@@ -16,9 +16,19 @@ GEM
       bson (~> 1.9.2)
     dotenv (0.9.0)
     hatchet (0.2.7)
+    hatchet-hipchat (0.2.0)
+      hatchet (~> 0.2)
+      hipchat-api (~> 1.0.4)
+    hipchat-api (1.0.5)
+      httparty
+    httparty (0.12.0)
+      json (~> 1.8)
+      multi_xml (>= 0.5.2)
+    json (1.8.1)
     kgio (2.9.1)
     mongo (1.9.2)
       bson (~> 1.9.2)
+    multi_xml (0.5.5)
     rack (1.5.2)
     rack-protection (1.5.2)
       rack
@@ -40,6 +50,7 @@ PLATFORMS
 DEPENDENCIES
   dotenv
   hatchet
+  hatchet-hipchat
   rake
   shortinator!
   sinatra

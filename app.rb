@@ -5,12 +5,7 @@ Dotenv.load
 
 register Hatchet
 
-Hatchet.configure do |config|
-  config.level :info
-  config.appenders << Hatchet::LoggerAppender.new do |appender|
-    appender.logger = Logger.new(STDOUT)
-  end
-end
+load 'config/hatchet.rb'
 
 def html_wrapper(content)
   "<html><body>#{content}</body></html>"
@@ -45,10 +40,10 @@ get '/:id' do
 
   begin
     redirect_to_url = Shortinator.click(params[:id], request_params(request))
-    logger.info "redirect_to_url=#{redirect_to_url}"
+    log.info { "id=#{params[:id]} => redirect_to_url=#{redirect_to_url}" }
     [302, { "Location" => redirect_to_url }, html_wrapper("<a href=\"#{redirect_to_url}\">#{redirect_to_url}</a>")]
   rescue => e
-    logger.error e.message
+    log.error "Error for id=#{params[:id]} - #{e.message}", e
     halt(404, "Not found")
   end
 end
