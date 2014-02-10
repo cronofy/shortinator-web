@@ -7,6 +7,8 @@ register Hatchet
 
 load 'config/hatchet.rb'
 
+KEY_REGEX = /\A[0-9a-zA-Z]{5,7}\Z/
+
 def html_wrapper(content)
   "<html><body>#{content}</body></html>"
 end
@@ -36,7 +38,7 @@ get '/ping' do
 end
 
 get '/:id' do
-  halt(404, "Not found") unless Shortinator::KEY_REGEX.match(params[:id])
+  halt(404, "Not found") unless KEY_REGEX.match(params[:id])
 
   begin
     redirect_to_url = Shortinator.click(params[:id], request_params(request))
