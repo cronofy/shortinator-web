@@ -36,6 +36,10 @@ get '/' do
   end
 end
 
+get '/ping' do
+  [200, {}, html_wrapper("Pong")]
+end
+
 get '/:id' do
   halt(404, "Not found") unless Shortinator::KEY_FORMAT.match(params[:id])
 
