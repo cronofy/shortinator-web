@@ -1,6 +1,6 @@
 GIT
   remote: https://github.com/onediary/shortinator.git
-  revision: 55aa9cc2c3db6961a7fff74827679b07db91f716
+  revision: 268e92d941993bfae0099a9eb4d47cd90e272f0f
   specs:
     shortinator (0.0.1)
       base62 (= 1.0.0)
