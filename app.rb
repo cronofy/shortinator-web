@@ -41,7 +41,7 @@ get '/ping' do
 end
 
 get '/:id' do
-  halt(404, "Not found") unless Shortinator::KEY_FORMAT.match(params[:id])
+  halt(404, "Not found") unless Shortinator::KEY_REGEX.match(params[:id])
 
   begin
     redirect_to_url = Shortinator.click(params[:id], request_params(request))
