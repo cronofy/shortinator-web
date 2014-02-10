@@ -5,7 +5,7 @@ Hatchet.configure do |config|
     appender.logger = Logger.new(STDOUT)
   end
 
-  hatchet.appenders << Hatchet::HipChatAppender.new do |hipchat|
+  config.appenders << Hatchet::HipChatAppender.new do |hipchat|
     hipchat.formatter = Hatchet::HipChatEmoticonFormatter.new
     hipchat.level (ENV['HATCHET_HIPCHAT_LEVEL'] || 'WARN').downcase.to_sym
     hipchat.api_token = ENV['HATCHET_HIPCHAT_TOKEN']
