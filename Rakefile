@@ -1,4 +1,7 @@
-require "shortinator"
+require 'bundler'
+Bundler.require(:default)
+
+Dotenv.load
 
 namespace :shortinator do
   desc "port links from bitly"
