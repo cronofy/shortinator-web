@@ -1,7 +1,7 @@
 GIT
   remote: https://github.com/cronofy/shortinator.git
-  revision: be1cf55ea27612151b70472d2421d5df0f239175
-  branch: update-bson
+  revision: d35d6c0be525f1cb8451d5a1f5412f0d8c2db4a4
+  branch: master
   specs:
     shortinator (0.1.0)
       base62 (= 1.0.0)
