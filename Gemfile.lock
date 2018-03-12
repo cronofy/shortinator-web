@@ -1,18 +1,18 @@
 GIT
   remote: https://github.com/cronofy/shortinator.git
-  revision: 10512414c788ead4c783d4dd9ab0d5a8369e5736
+  revision: be1cf55ea27612151b70472d2421d5df0f239175
   branch: update-bson
   specs:
     shortinator (0.1.0)
       base62 (= 1.0.0)
-      bson (~> 3.0)
+      bson (~> 4.0)
       mongo (~> 2.0)
 
 GEM
   remote: https://rubygems.org/
   specs:
     base62 (1.0.0)
-    bson (3.2.7)
+    bson (4.3.0)
     dotenv (2.0.1)
     hatchet (0.2.10)
     hatchet-hipchat (0.3.1)
@@ -25,8 +25,8 @@ GEM
       multi_xml (>= 0.5.2)
     json (1.8.2)
     kgio (2.9.3)
-    mongo (2.1.2)
-      bson (~> 3.0)
+    mongo (2.5.1)
+      bson (>= 4.3.0, < 5.0.0)
     multi_xml (0.5.5)
     rack (1.6.9)
     rack-protection (1.5.5)
